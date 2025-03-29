@@ -2,7 +2,6 @@ import { Box, Typography, Paper, Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../components/Card";
-import { Product } from "@/interface/interfaces";
 import { motion, AnimatePresence } from "framer-motion";
 import useStore from "@/store/store";
 
