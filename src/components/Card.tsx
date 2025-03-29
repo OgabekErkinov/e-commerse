@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  FavoriteBorderOutlined,
-  Favorite,
-  Add,
-  Remove,
-} from "@mui/icons-material";
+import { FavoriteBorderOutlined, Favorite, Add, Remove } from "@mui/icons-material";
 import { Box, IconButton, Stack, Typography } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";

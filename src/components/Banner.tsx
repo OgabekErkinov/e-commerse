@@ -6,10 +6,12 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import { ArrowForward, FiberManualRecord } from "@mui/icons-material";
 import { Product } from "@/interface/interfaces";
+import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const navigate = useNavigate()
 
   const getProducts = async () => {
     setIsLoading(true);
