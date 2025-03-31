@@ -1,17 +1,10 @@
-import {
-  Box,
-  Button,
-  Typography,
-  Divider,
-  Stack,
-  CircularProgress,
-  Modal,
-} from "@mui/material";
+import { Box, Button, Typography, Divider, Stack, Modal } from "@mui/material";
 import { useEffect, useMemo, useState } from "react";
 import useStore from "@/store/store";
 import { Card } from "@/components";
 import axios from "axios";
 import { Product } from "@/interface/interfaces";
+import MultipleLoading from "@/loadings/MultipleLoading";
 
 const ShoppingPage: React.FC = () => {
   const { carts, setCarts } = useStore();
@@ -60,6 +53,7 @@ const ShoppingPage: React.FC = () => {
 
   return (
     <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={4} p={4}>
+      
       <Box
         flex={3}
         display="grid"
@@ -68,11 +62,7 @@ const ShoppingPage: React.FC = () => {
         alignItems="center"
         justifyContent="center"
       >
-        {isLoading ? (
-          <Box display="flex" justifyContent="center" alignItems="center"  width="100%">
-            <CircularProgress />
-          </Box>
-        ) : carts.length > 0 ? (
+        {isLoading ? <MultipleLoading count={4}/> : carts.length > 0 ? (
           carts.map((product: Product, idx: number) => (
             <Card product={product} idx={idx} key={product.id} />
           ))
@@ -81,15 +71,8 @@ const ShoppingPage: React.FC = () => {
         )}
       </Box>
 
-      <Box
-        flex={1}
-        p={4}
-        bgcolor="white"
-        borderRadius={2}
-        boxShadow={3}
-        minWidth="250px"
-        sx={{ height: "fit-content" }}
-      >
+      <Box flex={1} p={4} bgcolor="white" borderRadius={2} boxShadow={3} minWidth="250px"
+           sx={{ height: "fit-content" }}>
         <Typography variant="h5" fontWeight={600} mb={2}>
           Shopping Summary
         </Typography>
@@ -120,29 +103,16 @@ const ShoppingPage: React.FC = () => {
 
       {/* Checkout Modal */}
       <Modal open={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)}>
-        <Box
-          position="absolute"
-          top="50%"
-          left="50%"
-          transform="translate(-50%, -50%)"
-          bgcolor="white"
-          p={4}
-          borderRadius={2}
-          boxShadow={3}
-          width={{ xs: "80%", sm: "50%", md: "30%" }}
-        >
+        <Box position="absolute"  bottom="20px" right="5%" bgcolor="white"  p={4} borderRadius={2}
+             boxShadow={3}  width={{ xs: "80%", sm: "50%", md: "30%" }} >
           <Typography variant="h6" fontWeight={600} textAlign="center" mb={2}>
             Order Confirmed!
           </Typography>
           <Typography variant="body1" textAlign="center" mb={3}>
             Thank you for your purchase. Your order is being processed.
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            fullWidth
-            onClick={() => setIsCheckoutOpen(false)}
-          >
+          <Button variant="contained" color="primary" fullWidth
+                  onClick={() => setIsCheckoutOpen(false)}>
             Close
           </Button>
         </Box>

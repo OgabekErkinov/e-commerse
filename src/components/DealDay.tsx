@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  Box,
-  Button,
-  Stack,
-  Typography,
-  Skeleton,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Button, Stack, Typography, Skeleton, useMediaQuery } from "@mui/material";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import CountdownTimer from "./CountDownTimer";
 import Card from "./Card";

@@ -34,7 +34,7 @@ const Card: React.FC<CardProps> = ({ product, idx }) => {
         );
         setCartCount(existingItem ? existingItem.quantity : 0);
       } catch (error) {
-        console.error("❌ Error fetching data", error);
+        console.error("Error fetching data", error);
       }
     };
     fetchData();
@@ -52,7 +52,7 @@ const Card: React.FC<CardProps> = ({ product, idx }) => {
       setFavourites(updatedFavourites);
       setIsFavorite(!isFavorite);
     } catch (error) {
-      console.error("❌ Error updating favorites", error);
+      console.error(" Error updating favorites", error);
       alert("Error occurred! Check console.");
     }
   };
@@ -83,39 +83,19 @@ const Card: React.FC<CardProps> = ({ product, idx }) => {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      position="relative"
-      borderRadius="8px"
-      overflow="hidden"
-      border="1px solid gray"
-      height="340px"
-      maxWidth="250px"
-      width="100%"
-      mx="auto"
-      bgcolor="#F2F2F2"
-      data-aos="fade-up"
-      data-aos-delay={50 * idx}
-      sx={{ transition: "0.3s ease", "&:hover": { transform: "scale(1.05)" } }}
-    >
+    <Box display="flex" flexDirection="column" position="relative" borderRadius="8px" overflow="hidden"
+         border="1px solid gray" height="340px" maxWidth="250px" width="100%" mx="auto" bgcolor="#F2F2F2"
+         data-aos="fade-up" data-aos-delay={50 * idx}
+         sx={{ transition: "0.3s ease", "&:hover": { transform: "scale(1.05)" } }}>
       <IconButton onClick={toggleFavorite} sx={{ position: "absolute", top: 10, right: 10 }}>
         {isFavorite ? <Favorite sx={{ color: "red" }} /> : <FavoriteBorderOutlined />}
       </IconButton>
 
       {product?.image && (
-        <Box
-          component="img"
-          src={product?.image}
-          height="50%"
-          width="80%"
-          mx="auto"
-          mt={1}
-          sx={{ objectFit: "contain", bgcolor: "#F2F2F2" }}
-        />
-      )}
+        <Box component="img" src={product?.image} height="50%" width="80%"
+             mx="auto" mt={1}  sx={{ objectFit: "contain", bgcolor: "#F2F2F2" }} /> )}
 
-      <Stack height="50%" p={2} justifyContent="space-between" bgcolor="#fff">
+       <Stack height="50%" p={2} justifyContent="space-between" bgcolor="#fff">
         <Box>
           <Typography variant="h6">{product?.category}</Typography>
           <Typography fontSize="16px">{product?.name}</Typography>
@@ -124,9 +104,10 @@ const Card: React.FC<CardProps> = ({ product, idx }) => {
           <Typography sx={{ color: "gray", textDecoration: "line-through" }}>{product?.price}$</Typography>
           <Typography fontWeight="bold" color="#002E58" fontSize="24px">{product?.inDiscount}$</Typography>
         </Box>
-      </Stack>
+       </Stack>
 
-      <Stack direction="row" alignItems="center" justifyContent="center" spacing={1} sx={{ position: "absolute", bottom: 10, right: 10 }}>
+       <Stack direction="row" alignItems="center" justifyContent="center"
+              sx={{ position: "absolute", bottom: 10, right: 10 }}>
         <IconButton onClick={() => handleCartChange(cartCount - 1)} disabled={cartCount === 0}>
           <Remove />
         </IconButton>
@@ -134,7 +115,7 @@ const Card: React.FC<CardProps> = ({ product, idx }) => {
         <IconButton onClick={() => handleCartChange(cartCount + 1)}>
           <Add />
         </IconButton>
-      </Stack>
+       </Stack>
     </Box>
   );
 };

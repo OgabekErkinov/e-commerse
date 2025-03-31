@@ -1,8 +1,9 @@
-import { Box, Button, Stack, Typography, Skeleton } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import { Product } from "@/interface/interfaces";
 import axios from "axios";
+import MultipleLoading from "@/loadings/MultipleLoading";
 
 const BestSelling = () => {
   const [category, setCategory] = useState("Computers");
@@ -84,27 +85,14 @@ const BestSelling = () => {
       <Box
         display="grid"
         justifyContent="center"
-        gridTemplateColumns={{
-          xs: "1fr",
-          sm: "1fr 1fr",
-          md: "repeat(3, 1fr)",
-          lg: "repeat(4, 1fr)",
-        }}
+        gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)" }}
         gap={4}
         p={4}
         mx="auto"
         bgcolor="#002E58"
       >
         {isLoading ? (
-          Array(4)
-            .fill(0)
-            .map((_, idx) => (
-              <Box key={idx} sx={{ width: "100%" }}>
-                <Skeleton variant="rectangular" width="100%" height={200} />
-                <Skeleton width="80%" height={30} sx={{ mt: 1 }} />
-                <Skeleton width="60%" height={30} />
-              </Box>
-            ))
+          <MultipleLoading count={4}/>
         ) : filteredProducts.length > 0 ? (
           filteredProducts.map((product, idx) => (
             <Card product={product} idx={idx} key={idx} />

@@ -36,20 +36,11 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
   }
 
   return (
-    <Box
-      width="240px"
-      height="40px"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      borderRadius="8px"
-      bgcolor="#002E58"
-    >
-      <Typography fontSize="14px" color="#fff">
-        Ending soon : {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
-        {timeLeft.seconds}s
-      </Typography>
+    <Box width="240px" height="40px" display="flex" flexDirection="column" justifyContent="center"
+         alignItems="center" borderRadius="8px" bgcolor="#002E58" >
+        <Typography fontSize="14px" color="#fff">
+           Ending soon : {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "} {timeLeft.seconds}s
+        </Typography>
     </Box>
   );
 };
