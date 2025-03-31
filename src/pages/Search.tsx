@@ -4,17 +4,18 @@ import { Box, Typography } from "@mui/material";
 import { Product } from "@/interface/interfaces";
 import useStore from "@/store/store";
 import { Card } from "@/components";
+import MultipleLoading from "@/loadings/MultipleLoading";
 
 const SearchPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const { searchCategory, searchInputValue } = useStore();
 
   useEffect(() => {
     const fetchProducts = async () => {
-      setLoading(true);
+      setIsLoading(true);
       setError(null);
       try {
         const { data } = await axios.get<Product[]>(
@@ -24,7 +25,7 @@ const SearchPage = () => {
       } catch (err) {
         setError("Failed to fetch products");
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
     fetchProducts();
@@ -43,7 +44,6 @@ const SearchPage = () => {
       <Typography variant="h4" gutterBottom>
         Search Results
       </Typography>
-      {loading && <Typography>Loading...</Typography>}
       {error && <Typography color="error">{error}</Typography>}
       <Box
         width="90%"
@@ -52,11 +52,13 @@ const SearchPage = () => {
         gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "repeat(3, 1fr)" }}
         gap={4}
       >
-        {filteredProducts.map((product, idx) => (
+        {
+         isLoading ? <MultipleLoading count={4}/> :
+        filteredProducts.map((product, idx) => (
           <Card product={product} idx={idx} key={idx} />
         ))}
       </Box>
-      {filteredProducts.length === 0 && !loading && (
+      {filteredProducts.length === 0 && !isLoading && (
         <Typography>No products found.</Typography>
       )}
     </Box>
