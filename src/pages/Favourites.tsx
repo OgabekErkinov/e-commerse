@@ -1,9 +1,9 @@
-import { Box, Typography, Paper, Skeleton } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../components/Card";
-import { motion, AnimatePresence } from "framer-motion";
 import useStore from "@/store/store";
+import MultipleLoading from "@/loadings/MultipleLoading";
 
 const FavouritesPage = () => {
   const { favourites, setFavourites } = useStore();
@@ -31,45 +31,22 @@ const FavouritesPage = () => {
         Your Favourite Products
       </Typography>
 
-      {isLoading ? (
-        <Paper elevation={3} sx={{ p: 4, borderRadius: 3, width: "100%", maxWidth: "1200px" }}>
-          <Box
-            display="grid"
-            gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" }}
-            gap={4}
-          >
-            {[...Array(6)].map((_, idx) => (
-              <Skeleton key={idx} variant="rectangular" width="100%" height={250} sx={{ borderRadius: 2 }} />
-            ))}
-          </Box>
-        </Paper>
-      ) : favourites.length > 0 ? (
-        <Paper elevation={3} sx={{ p: 4, borderRadius: 3, width: "100%", maxWidth: "1200px" }}>
-          <AnimatePresence>
-            <Box
-              display="grid"
-              gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" }}
-              gap={4}
-            >
-              {favourites.map((product, idx) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3, delay: idx * 0.1 }}
-                >
-                  <Card product={product} idx={idx} />
-                </motion.div>
-              ))}
-            </Box>
-          </AnimatePresence>
-        </Paper>
-      ) : (
-        <Typography variant="h6" sx={{ mt: 4, opacity: 0.7 }}>
+      <Box height='100%' width='100%' display='grid' gap={2}
+           gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" }}>
+        {
+          isLoading ? <MultipleLoading count={4}/> : 
+           favourites?.map((product, idx) => {
+            return (
+              <Card product={product} idx={idx} key={product?.id}/>
+            )
+           })
+
+        }
+
+      </Box>
+       {!isLoading && favourites?.length < 1 && <Typography variant="h6" sx={{ mt: 4, opacity: 0.7 }}>
           You haven’t added any favourites yet! 
-        </Typography>
-      )}
+        </Typography> }
     </Box>
   );
 };
