@@ -10,12 +10,8 @@ const AdvBanner = () => {
       width="100%"
       height={{ xs: "220px", sm: "280px", md: "320px" }}
       mx="auto"
-      sx={{
-        backgroundImage: "url(/advBanner.svg)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+      sx={{ backgroundImage: "url(/advBanner.svg)", backgroundSize: "cover", backgroundPosition: "center" }}
+     >
       <Box height="100%" width="100%" bgcolor="rgba(0, 0, 0, 0.4)">
         <Stack
           direction={{ xs: "column", md: "row" }}
@@ -35,10 +31,7 @@ const AdvBanner = () => {
             <Typography color="#FF9900" fontSize={{ xs: "16px", md: "18px" }}>
               Gamer Days
             </Typography>
-            <Typography
-              variant="h4"
-              fontSize={{ xs: "24px", md: "32px" }}
-              mb={1}
+            <Typography variant="h4" fontSize={{ xs: "24px", md: "32px" }}  mb={1}
             >
               SHOP. SAVE. WIN
             </Typography>
@@ -47,25 +40,14 @@ const AdvBanner = () => {
             </Typography>
           </Stack>
 
-          <Button
-            disableTouchRipple
-            disableFocusRipple
-            onClick={() => navigate("/shop")}
+          {/* navigate button */}
+
+          <Button disableTouchRipple  disableFocusRipple
+                  onClick={() => navigate("/shop")}
           >
-            <Stack
-              direction="row"
-              bgcolor="#002E58"
-              borderRadius="8px"
-              p={1.2}
-              gap={1}
-              justifyContent="center"
-              alignItems="center"
-              color="#fff"
-              width="180px"
-              sx={{
-                transition: "all 0.3s ease",
-                "&:hover": { bgcolor: "#0057D9" },
-              }}
+            <Stack direction="row" bgcolor="#002E58" borderRadius="8px" p={2} gap={1}
+                   justifyContent="center" alignItems="center" color="#fff" width="180px"
+              sx={{ transition: "all 0.3s ease", "&:hover": { bgcolor: "#0057D9" } }}
             >
               <ArrowForward fontSize="small" />
               <Typography fontSize={{ xs: "14px", sm: "16px" }}>
@@ -73,6 +55,9 @@ const AdvBanner = () => {
               </Typography>
             </Stack>
           </Button>
+
+          {/* navigate button */}
+
         </Stack>
       </Box>
     </Box>
