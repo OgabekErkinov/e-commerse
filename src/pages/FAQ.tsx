@@ -17,7 +17,7 @@ const FAQ = () => {
   };
 
   return (
-    <Container maxWidth="md" sx={{ mt: 4 }}>
+    <Container maxWidth="md" sx={{ my: 4 }}>
       <Typography variant="h4" gutterBottom textAlign="center">
         Frequently Asked Questions
       </Typography>

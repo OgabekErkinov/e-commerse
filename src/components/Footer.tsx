@@ -1,39 +1,45 @@
-import { Box, Divider, Stack, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography, Link } from "@mui/material";
 import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   const sections = [
     {
       title: "Company",
       items: [
-        "About",
-        "Contact",
-        "Collection",
-        "Customer Services",
-        "Store Locator",
+        { name: "About", path: "/about" },
+        { name: "Contact", path: "/contact" },
+        { name: "Collection", path: "/collection" },
+        { name: "Customer Services", path: "/customer-services" },
+        { name: "Store Locator", path: "/store-locator" },
       ],
     },
     {
       title: "Product",
       items: [
-        "Computer & Gaming",
-        "Electronic",
-        "Mobile Accessories",
-        "Smart Devices",
-        "Photography & Video",
+        { name: "Computer & Gaming", path: "/products/computer-gaming" },
+        { name: "Electronic", path: "/products/electronic" },
+        { name: "Mobile Accessories", path: "/products/mobile-accessories" },
+        { name: "Smart Devices", path: "/products/smart-devices" },
+        { name: "Photography & Video", path: "/products/photography-video" },
       ],
     },
     {
       title: "Super Deals",
       items: [
-        "Mid-Season Sale",
-        "50% off (up to $99)",
-        "30% off on all audio items",
+        { name: "Mid-Season Sale", path: "/deals/mid-season" },
+        { name: "50% off (up to $99)", path: "/deals/50-off" },
+        { name: "30% off on all audio items", path: "/deals/audio" },
       ],
     },
     {
       title: "Customer Service",
-      items: ["Delivery Info", "My Account", "Size Guides", "FAQ's"],
+      items: [
+        { name: "Delivery Info", path: "/customer-service/delivery-info" },
+        { name: "My Account", path: "/account" },
+        { name: "Size Guides", path: "/customer-service/size-guides" },
+        { name: "FAQ's", path: "/faq" },
+      ],
     },
   ];
 
@@ -57,9 +63,17 @@ const Footer = () => {
               {section.title}
             </Typography>
             {section.items.map((item, i) => (
-              <Typography key={i} fontSize={14} color="gray">
-                {item}
-              </Typography>
+              <Link
+                component={NavLink}
+                to={section?.title === 'Company' ? item.path : '/'}
+                key={i}
+                fontSize={14}
+                color="gray"
+                underline="none"
+                sx={{ display: "block", mb: 0.5, '&:hover': { color: "black" } }}
+              >
+                {item.name}
+              </Link>
             ))}
           </Stack>
         ))}
