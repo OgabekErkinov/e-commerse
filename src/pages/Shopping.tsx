@@ -14,7 +14,7 @@ const ShoppingPage: React.FC = () => {
   const getCarts = async (): Promise<void> => {
     setIsLoading(true);
     try {
-      const { data } = await axios.get<Product[]>("http://localhost:5000/carts");
+      const { data } = await axios.get<Product[]>("https://json-server-oa7o.onrender.com/carts");
       setCarts(data);
     } catch (error) {
       console.error("Error fetching carts:", error);
@@ -57,7 +57,7 @@ const ShoppingPage: React.FC = () => {
       <Box
         flex={3}
         display="grid"
-        gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" }}
+        gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "repeat(4,1fr)" }}
         gap={4}
         alignItems="center"
         justifyContent="center"

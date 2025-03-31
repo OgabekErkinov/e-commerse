@@ -26,13 +26,14 @@ const Card: React.FC<CardProps> = ({ product, idx }) => {
           axios.get(`${BASE_URL}/favourites`),
           axios.get(`${BASE_URL}/carts`),
         ]);
+        console.log(favRes, cartRes)
 
-        setIsFavorite(favRes.data.some((fav: Product) => fav.id === product.id));
+        setIsFavorite(favRes?.data?.some((fav: Product) => fav.id === product.id));
 
-        const existingItem = cartRes.data.find(
-          (cartItem: { id: number }) => cartItem.id === product.id
+        const existingItem = cartRes?.data?.find(
+          (cartItem: { id: string }) => cartItem?.id === product?.id
         );
-        setCartCount(existingItem ? existingItem.quantity : 0);
+        setCartCount(existingItem ? existingItem?.quantity : 0);
       } catch (error) {
         console.error("Error fetching data", error);
       }

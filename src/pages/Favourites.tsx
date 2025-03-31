@@ -12,7 +12,7 @@ const FavouritesPage = () => {
   const getFavourites = async () => {
     try {
       setIsLoading(true);
-      const { data } = await axios.get("http://localhost:5000/favourites");
+      const { data } = await axios.get("https://json-server-oa7o.onrender.com/favourites");
       setFavourites(data);
     } catch (error) {
       console.error(error);
@@ -32,7 +32,7 @@ const FavouritesPage = () => {
       </Typography>
 
       <Box height='100%' width='100%' display='grid' gap={2}
-           gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" }}>
+           gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "repeat(4,1fr)" }}>
         {
           isLoading ? <MultipleLoading count={4}/> : 
            favourites?.map((product, idx) => {

@@ -19,8 +19,9 @@ const SearchPage = () => {
       setError(null);
       try {
         const { data } = await axios.get<Product[]>(
-          "http://localhost:5000/products",
+          "https://json-server-oa7o.onrender.com/products",
         );
+        console.log(data)
         setProducts(data);
       } catch (err) {
         setError("Failed to fetch products");
@@ -32,11 +33,9 @@ const SearchPage = () => {
   }, []);
 
   const filteredProducts = products.filter(
-    (product) =>
-      (searchCategory ? product.category === searchCategory : true) &&
-      (searchInputValue
-        ? product.name.toLowerCase().includes(searchInputValue.toLowerCase())
-        : true),
+    (product) => product?.category?.includes(searchCategory) && 
+                 (product.name.toLowerCase().includes(searchInputValue.toLowerCase().trim()) ||
+                  product?.category.toLocaleLowerCase().includes(searchInputValue.toLocaleLowerCase().trim()))
   );
 
   return (
@@ -49,14 +48,16 @@ const SearchPage = () => {
         width="90%"
         mx="auto"
         display="grid"
-        gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "repeat(3, 1fr)" }}
+        gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "repeat(4, 1fr)" }}
         gap={4}
       >
         {
          isLoading ? <MultipleLoading count={4}/> :
-        filteredProducts.map((product, idx) => (
-          <Card product={product} idx={idx} key={idx} />
-        ))}
+        filteredProducts?.map((product, idx) => {
+          return (
+            <Card product={product} idx={idx} key={idx} />
+          )
+        })}
       </Box>
       {filteredProducts.length === 0 && !isLoading && (
         <Typography>No products found.</Typography>
