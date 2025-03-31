@@ -6,9 +6,7 @@ const AdvCards = () => {
   const navigate = useNavigate();
 
   return (
-    <Box
-      width="94%"
-      mx="auto"
+    <Box width="92%" mx="auto"
       my={2}
       p={2}
       display="grid"
@@ -16,13 +14,8 @@ const AdvCards = () => {
       gap={{ xs: "20px", md: "40px" }}
     >
       {/* First Card */}
-      <Box
-        height={{ xs: "350px", md: "260px" }}
-        width="100%"
-        display="flex"
-        flexDirection={{ xs: "column", md: "row" }}
-        p="14px"
-        borderRadius="12px"
+      <Box height={{ xs: "350px", md: "260px" }} width="100%" display="flex"
+           flexDirection={{ xs: "column", md: "row" }} p={2} borderRadius={2}
         sx={{
           backgroundImage: "url(/redBg.svg)",
           backgroundSize: "cover",
@@ -41,8 +34,7 @@ const AdvCards = () => {
             Handheld Smartphone Gimbal
           </Typography>
           <Typography color="#eee" fontSize="14px" mt={1} mb={2}>
-            Professional stabilization for smooth and cinematic shots on your
-            phone.
+            Professional stabilization for smooth and cinematic shots on your phone.
           </Typography>
           <Button
             disableTouchRipple
@@ -71,13 +63,8 @@ const AdvCards = () => {
       </Box>
 
       {/* Second Card */}
-      <Box
-        height={{ xs: "350px", md: "260px" }}
-        width="100%"
-        display="flex"
-        flexDirection={{ xs: "column-reverse", md: "row" }}
-        p="14px"
-        borderRadius="12px"
+      <Box height={{ xs: "350px", md: "260px" }} width="100%" display="flex"
+           flexDirection={{ xs: "column-reverse", md: "row" }} p={2}  borderRadius={2}
         sx={{
           backgroundImage: "url(/blueBg.svg)",
           backgroundSize: "cover",
