@@ -63,7 +63,7 @@ const DealDay = () => {
               display="flex"
               alignItems="center"
               justifyContent="center"
-              bgcolor={direction === "back" ? "#002E58" : "#fff"}
+              bgcolor="#002E58"
               border="1px solid gray"
               borderRadius="50%"
               sx={{
@@ -74,7 +74,7 @@ const DealDay = () => {
               }}
             >
               <Button onClick={() => handleClick(direction as "forward" | "back")} disableTouchRipple disableFocusRipple sx={{ height: "100%", width: "100%" }}>
-                {direction === "back" ? <ArrowBack sx={{ color: "#fff" }} /> : <ArrowForward sx={{ color: "blue" }} />}
+                {direction === "back" ? <ArrowBack sx={{ color: "#fff" }} /> : <ArrowForward sx={{ color: "#fff" }} />}
               </Button>
             </Box>
           ))}

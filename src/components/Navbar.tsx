@@ -2,10 +2,10 @@ import axios from "axios";
 import { handleScroll } from "@/libs/libs";
 import useStore from "@/store/store";
 import { FavoriteBorder, Menu as MenuIcon, ShoppingCart, Close as CloseIcon } from "@mui/icons-material";
-import { Box, MenuItem, Menu, Typography,  IconButton, Button, useMediaQuery,
-         Badge, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import { Box, MenuItem, Menu, Typography, IconButton, Button, useMediaQuery, Badge, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Product } from "@/interface/interfaces";
 
 const Navbar = () => {
   const { setSearchCategory, searchCategory, carts, favourites } = useStore();
@@ -21,12 +21,12 @@ const Navbar = () => {
     if (isLargeScreen) setMenuOpen(false);
   }, [isLargeScreen]);
 
-  // API fetch funksiyalari
   const getProducts = async () => {
     try {
       setIsLoading(true);
       const response = await axios.get("https://json-server-oa7o.onrender.com/products");
-      setCategories(response?.data?.categories || []);
+      const uniqueCategories = Array.from(new Set(response?.data?.map((cat: Product) => cat?.category))) as string[];
+      setCategories(uniqueCategories);
     } catch (error) {
       console.error("Error fetching products:", error);
     } finally {
@@ -35,10 +35,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      await getProducts();
-    };
-    fetchData();
+    getProducts();
   }, []);
 
   const navLinks = [
@@ -48,112 +45,43 @@ const Navbar = () => {
     { label: "Computers", path: "computers", type: "scroll" },
     { label: "Shop", path: "/shop", type: "navigate" },
   ];
+  
 
-  // Mobil menyuni yopish
-  const handleCloseMenu = () => {
-    setMenuOpen(false);
-  };
+  const handleCloseMenu = () => setMenuOpen(false);
 
   return (
     <Box position="sticky" zIndex={3} top={0}>
-      <Box
-        height="60px"
-        width="100%"
-        bgcolor="#002E58"
-        display="flex"
-        justifyContent="center"
-      >
-        <Box
-          height="100%"
-          width="80%"
-          maxWidth="1400px"
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          {/* Mobil menyu tugmasi */}
-          <IconButton
-            sx={{ display: { xs: "block", md: "none" }, color: "#fff" }}
-            onClick={() => setMenuOpen(true)}
-          >
+      <Box height="60px" width="100%" bgcolor="#002E58" display="flex" justifyContent="center">
+        <Box height="100%" width="80%" maxWidth="1400px" display="flex" justifyContent="space-between" alignItems="center">
+          <IconButton sx={{ display: { xs: "block", md: "none" }, color: "#fff" }} onClick={() => setMenuOpen(true)}>
             <MenuIcon />
           </IconButton>
 
-          {/* Kategoriyalar tugmasi */}
-          <Button
-            onClick={(e) => setAnchorEl(e.currentTarget)}
-            sx={{
-              color: "#fff",
-              border: "1px solid white",
-              width: "220px",
-              height: "45px",
-              px: 2,
-            }}
-          >
+          <Button onClick={(e) => setAnchorEl(e.currentTarget)} sx={{ color: "#fff", border: "1px solid white", width: "220px", height: "45px", px: 2 }}>
             {searchCategory || "All Categories"}
           </Button>
 
-          {/* Kategoriyalar menyusi */}
-          <Menu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={() => setAnchorEl(null)}
-          >
-            <MenuItem onClick={() => setSearchCategory("all")}>
-              All Categories
-            </MenuItem>
-            {isLoading ? (
-              <MenuItem disabled>Loading...</MenuItem>
-            ) : (
-              categories.map((category, idx) => (
-                <MenuItem key={idx} onClick={() => setSearchCategory(category)}>
-                  {category}
-                </MenuItem>
-              ))
-            )}
+          <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>
+            <MenuItem onClick={() => setSearchCategory("all")}>All Categories</MenuItem>
+            {isLoading ? <MenuItem disabled>Loading...</MenuItem> : categories.map((category, idx) => (
+              <MenuItem key={idx} onClick={() => setSearchCategory(category)}>{category}</MenuItem>
+            ))}
           </Menu>
 
-          {/* Desktop menyu */}
           <Box display={{ xs: "none", md: "flex" }} alignItems="center" gap={3}>
-            {navLinks.map((link, idx) =>
-              link.type === "navigate" ? (
-                <Link
-                  key={idx}
-                  to={link.path}
-                  style={{ textDecoration: "none" }}
-                >
-                  <Typography
-                    sx={{
-                      cursor: "pointer",
-                      color: "#fff",
-                      "&:hover": { color: "#002b80" },
-                    }}
-                  >
-                    {link.label}
-                  </Typography>
-                </Link>
-              ) : (
-                <Typography
-                  key={idx}
-                  sx={{
-                    cursor: "pointer",
-                    color: "#fff",
-                    "&:hover": { color: "#002b80" },
-                  }}
-                  onClick={() => handleScroll(link.path)}
-                >
-                  {link.label}
-                </Typography>
-              ),
-            )}
+            {navLinks.map((link, idx) => link.type === "navigate" ? (
+              <Link key={idx} to={link.path} style={{ textDecoration: "none" }}>
+                <Typography sx={{ cursor: "pointer", color: "#fff", "&:hover": { color: "#002b80" } }}>{link.label}</Typography>
+              </Link>
+            ) : (
+              <Typography key={idx} sx={{ cursor: "pointer", color: "#fff", "&:hover": { color: "#002b80" } }} onClick={() => handleScroll(link.path)}>
+                {link.label}
+              </Typography>
+            ))}
           </Box>
 
-          {/* Ikonkalar */}
           <Box display="flex" alignItems="center" gap={2}>
-            <Link
-              to="/favourites"
-              style={{ color: "#fff", position: "relative" }}
-            >
+            <Link to="/favourites" style={{ color: "#fff", position: "relative" }}>
               <Badge badgeContent={favourites?.length} color="error">
                 <FavoriteBorder sx={{ color: "#fff" }} />
               </Badge>
@@ -167,7 +95,6 @@ const Navbar = () => {
         </Box>
       </Box>
 
-      {/* Mobil menyu */}
       <Drawer anchor="left" open={menuOpen} onClose={handleCloseMenu}>
         <Box width="250px" role="presentation">
           <Box display="flex" justifyContent="flex-end" p={2}>
@@ -177,18 +104,7 @@ const Navbar = () => {
           </Box>
           <List>
             {navLinks.map((link, idx) => (
-              <ListItem
-                key={idx}
-                button
-                onClick={() => {
-                  if (link.type === "navigate") {
-                    navigate(link.path);
-                  } else {
-                    handleScroll(link.path);
-                  }
-                  handleCloseMenu();
-                }}
-              >
+              <ListItem key={idx} component='button' onClick={() => { navigate(link.type === "navigate" ? link.path : "/favourites"); handleCloseMenu(); }}>
                 <ListItemText primary={link.label} />
               </ListItem>
             ))}
