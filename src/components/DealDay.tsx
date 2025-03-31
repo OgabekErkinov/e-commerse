@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Box, Button, Stack, Typography, Skeleton, useMediaQuery } from "@mui/material";
+import { Box, Button, Stack, Typography, useMediaQuery } from "@mui/material";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import CountdownTimer from "./CountDownTimer";
 import Card from "./Card";
 import { Product } from "@/interface/interfaces";
+import MultipleLoading from "@/loadings/MultipleLoading";
 
 const DealDay = () => {
   const [start, setStart] = useState(0);
@@ -18,14 +19,17 @@ const DealDay = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      setIsLoading(true);
+      
       try {
+        setIsLoading(true);
         const { data } = await axios.get("https://json-server-oa7o.onrender.com/products");
         setProducts(data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching products:", error);
+        setIsLoading(false);
       }
-      setIsLoading(false);
+      
     };
 
     fetchProducts();
@@ -41,7 +45,7 @@ const DealDay = () => {
   };
 
   return (
-    <Box id="deals" height="620px" width="95%" mx="auto" px={4} py={4}>
+    <Box id="deals" height="620px" width="95%" mx="auto" p={2}>
       <Stack height="100%" maxWidth="1200px" mx="auto" justifyContent="space-around" alignItems="center">
         <Typography fontSize={{ xs: "22px", md: "36px" }} fontWeight="600">
           Deal of the Day
@@ -80,11 +84,9 @@ const DealDay = () => {
           ))}
 
           {/* Product Cards */}
-          <Box display="flex" overflow="hidden" justifyContent="center" gap={2} p={2}>
+          <Box height='100%' display="flex" overflow="hidden" justifyContent="center" gap={2} p={2}>
             {isLoading
-              ? Array.from({ length: cardsToShow }).map((_, idx) => (
-                  <Skeleton key={idx} variant="rectangular" width={200} height={300} sx={{ borderRadius: "8px" }} />
-                ))
+              ? <MultipleLoading count={4}/>
               : products?.slice(start, start + cardsToShow).map((product, idx) => (
                   <Card product={product} idx={idx} key={idx} />
                 ))}

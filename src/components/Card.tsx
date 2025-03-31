@@ -61,8 +61,8 @@ const Card: React.FC<CardProps> = ({ product, idx }) => {
   const handleCartChange = async (quantity: number) => {
     if (quantity < 0) return;
     try {
-      const response = await axios.get(`${BASE_URL}/carts`);
-      const cartItem = response.data.find((item: { id: number }) => item.id === product.id);
+      const { data } = await axios.get(`${BASE_URL}/carts`);
+      const cartItem = data?.find((item: { id: string }) => item?.id === product?.id);
 
       const cartData = { ...product, quantity };
 
