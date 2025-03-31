@@ -52,12 +52,10 @@ const ShoppingPage: React.FC = () => {
   );
 
   return (
-    <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={4} p={4}>
+    <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={2} p={4}>
       
-      <Box
-        flex={3}
-        display="grid"
-        gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "repeat(4,1fr)" }}
+      <Box width='70%' display="grid"
+        gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "repeat(3,1fr)" }}
         gap={4}
         alignItems="center"
         justifyContent="center"
@@ -71,7 +69,7 @@ const ShoppingPage: React.FC = () => {
         )}
       </Box>
 
-      <Box flex={1} p={4} bgcolor="white" borderRadius={2} boxShadow={3} minWidth="250px"
+      <Box p={4} bgcolor="white" borderRadius={2} boxShadow={3} minWidth="250px" maxWidth='300px'
            sx={{ height: "fit-content" }}>
         <Typography variant="h5" fontWeight={600} mb={2}>
           Shopping Summary
