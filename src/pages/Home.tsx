@@ -1,27 +1,10 @@
-import {
-  AdvBanner,
-  AdvCards,
-  Banner,
-  BestSelling,
-  Contact,
-  DealDay,
-  InfoBoxes,
-  NewComing,
-  Offer,
-  Recommended,
-  TrendCategory,
-} from "@/components";
+import { AdvBanner, AdvCards, Banner, BestSelling, Contact, DealDay, InfoBoxes, NewComing, Offer,
+         Recommended, TrendCategory } from "@/components";
 import { Stack } from "@mui/material";
 
 const Home = () => {
   return (
-    <Stack
-      height="auto"
-      width="100%"
-      maxWidth="1800px"
-      alignItems="center"
-      gap={2}
-    >
+    <Stack height="auto" width="100%" maxWidth="1800px" alignItems="center" gap={2}>
       <Banner />
       <AdvCards />
       <DealDay />
