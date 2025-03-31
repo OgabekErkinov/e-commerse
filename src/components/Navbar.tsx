@@ -50,7 +50,7 @@ const Navbar = () => {
   const handleCloseMenu = () => setMenuOpen(false);
 
   return (
-    <Box position="sticky" zIndex={3} top={0}>
+    <Box position="sticky" zIndex={3} top={0} width='100%'>
       <Box height="60px" width="100%" bgcolor="#002E58" display="flex" justifyContent="center">
         <Box height="100%" width="80%" maxWidth="1400px" display="flex" justifyContent="space-between" alignItems="center">
           <IconButton sx={{ display: { xs: "block", md: "none" }, color: "#fff" }} onClick={() => setMenuOpen(true)}>

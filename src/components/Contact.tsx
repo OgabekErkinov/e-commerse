@@ -1,6 +1,7 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { Call, Email } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import CallButton from "./CallButton";
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Contact = () => {
               <Call sx={{ color: "black" }} />
               <Typography color="gray">call us</Typography>
             </Stack>
-            <Typography color="black">+99897 229 32 99</Typography>
+            <CallButton phoneNumber="+998972293299"/>
           </Stack>
 
           {/* Divider */}
