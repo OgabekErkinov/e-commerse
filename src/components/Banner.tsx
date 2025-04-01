@@ -60,7 +60,7 @@ const Banner = () => {
           ))
         ) : (
           products
-            .filter((p) => searchCategory != 'all' || '' ? p.category === searchCategory : p.category === defaultCategory)
+            .filter((p) => !(searchCategory === 'all' || searchCategory === '') ? p.category === searchCategory : p.category === defaultCategory)
             .map((product, idx) => (
               <SwiperSlide key={idx}>
                 <Box bgcolor="#F2F2F2" height="400px" borderRadius="12px" width="100%" display="flex" flexDirection={{ xs: "column", sm: "row" }}>
