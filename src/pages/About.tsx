@@ -38,7 +38,7 @@ const About = () => {
         </Box>
         <Box
           component="img"
-          src="/images/about-goal.jpg"
+          src="https://bosslocks.in/wp-content/uploads/bosslock-our-vision.jpg"
           width="100%"
           height="300px"
           sx={{ objectFit: "cover", borderRadius: "10px", flex: 1 }}
@@ -64,7 +64,7 @@ const About = () => {
         </Box>
         <Box
           component="img"
-          src="/images/about-products.jpg"
+          src="https://www.jetkrate.com/wp-content/uploads/2024/01/Check-Out-These-Top-15-Best-Online-Shopping-Sites-for-Electronics-in-UK.webp"
           width="100%"
           height="300px"
           sx={{ objectFit: "cover", borderRadius: "10px", flex: 1 }}
@@ -91,7 +91,7 @@ const About = () => {
         </Box>
         <Box
           component="img"
-          src="/images/about-shopping.jpg"
+          src="https://i.banks.kg/8679/conversions/oco-order-crypto-exchange-work-large-webp.webp"
           width="100%"
           height="300px"
           sx={{ objectFit: "cover", borderRadius: "10px", flex: 1 }}
@@ -118,7 +118,7 @@ const About = () => {
         </Box>
         <Box
           component="img"
-          src="/images/about-trust.jpg"
+          src="https://www.socialpinpoint.com/wp-content/smush-webp/2021/11/BuildTrustCommunityEngagement.jpg.webp"
           width="100%"
           height="300px"
           sx={{ objectFit: "cover", borderRadius: "10px", flex: 1 }}
