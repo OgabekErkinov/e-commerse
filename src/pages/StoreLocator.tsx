@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Container, Card, Typography, Button } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import useAlert from "@/store/alertStore";
 
 const center = { lat: 38.8608, lng: 65.7847 }; // Qarshi markazi koordinatalari
 const storeLocation = { lat: 38.8615, lng: 65.7833 }; // Do'kon joylashuvi
 
 export default function StoreLocator() {
+    const { showAlert } = useAlert()
   const [userLocation, setUserLocation] = useState<null | { lat: number; lng: number }>(null);
   const [distance, setDistance] = useState<number | null>(null);
 
@@ -23,16 +25,16 @@ export default function StoreLocator() {
           setUserLocation(userCoords);
           calculateDistance(userCoords, center);
         },
-        () => alert("Joylashuv aniqlanmadi!"),
+        () => showAlert("Location isn't found", "red"),
         { enableHighAccuracy: true }
       );
     } else {
-      alert("Brauzeringiz geolocation-ni qo‘llab-quvvatlamaydi.");
+          showAlert("Your browser doesn't supper geolocation",'red');
     }
   };
 
   const calculateDistance = (userCoords: { lat: number; lng: number }, centerCoords: { lat: number; lng: number }) => {
-    const R = 6371; // Yer radiusi (km)
+    const R = 6371; 
     const dLat = ((centerCoords.lat - userCoords.lat) * Math.PI) / 180;
     const dLng = ((centerCoords.lng - userCoords.lng) * Math.PI) / 180;
     const a =
@@ -42,11 +44,11 @@ export default function StoreLocator() {
         Math.sin(dLng / 2) * Math.sin(dLng / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distance = R * c;
-    setDistance(parseFloat(distance.toFixed(2))); // Masofani 2 xonagacha aniqlikda chiqaramiz
+    setDistance(parseFloat(distance.toFixed(2))); 
   };
 
   return (
-    <Container maxWidth="md" style={{ textAlign: "center", marginTop: "20px" }}>
+    <Container maxWidth="md" style={{ textAlign: "center", margin: "20px auto" }}>
       <iframe
         src={`https://www.google.com/maps?q=${storeLocation.lat},${storeLocation.lng}&output=embed`}
         width="100%"
@@ -66,7 +68,7 @@ export default function StoreLocator() {
             🛣 Sizning joyingizdan Qarshi markazigacha: {distance} km
           </Typography>
         )}
-        <Button variant="contained" color="primary" onClick={handleGetLocation} style={{ marginTop: "10px" }}>
+        <Button variant="contained" color="primary" onClick={handleGetLocation} sx={{ margin: "10px auto", backgroundColor : '#002E58' }}>
           Mening joylashuvimni aniqlash
         </Button>
       </Card>

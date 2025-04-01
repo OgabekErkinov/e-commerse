@@ -65,7 +65,7 @@ const Footer = () => {
             {section.items.map((item, i) => (
               <Link
                 component={NavLink}
-                to={section?.title === 'Company' ? item.path : '/'}
+                to={section?.title === 'Company' || 'Customer Service'  ? item.path : '/'}
                 key={i}
                 fontSize={14}
                 color="gray"
