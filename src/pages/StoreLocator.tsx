@@ -4,12 +4,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import useAlert from "@/store/alertStore";
 
-const center = { lat: 38.8608, lng: 65.7847 }; // Qarshi markazi koordinatalari
-const storeLocation = { lat: 38.8615, lng: 65.7833 }; // Do'kon joylashuvi
+const center = { lat: 38.8608, lng: 65.7847 }; 
+const storeLocation = { lat: 38.8615, lng: 65.7833 }; 
 
 export default function StoreLocator() {
     const { showAlert } = useAlert()
-  const [userLocation, setUserLocation] = useState<null | { lat: number; lng: number }>(null);
+ 
   const [distance, setDistance] = useState<number | null>(null);
 
   useEffect(() => {
@@ -22,7 +22,6 @@ export default function StoreLocator() {
         (position) => {
           const { latitude, longitude } = position.coords;
           const userCoords = { lat: latitude, lng: longitude };
-          setUserLocation(userCoords);
           calculateDistance(userCoords, center);
         },
         () => showAlert("Location isn't found", "red"),
