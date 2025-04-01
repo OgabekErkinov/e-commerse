@@ -11,20 +11,19 @@ const SearchPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const { searchCategory, searchInputValue } = useStore();
+  const { searchInputValue } = useStore();
 
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
-      setError(null);
       try {
         const { data } = await axios.get<Product[]>(
           "https://json-server-oa7o.onrender.com/products",
         );
-        console.log(data)
         setProducts(data);
       } catch (err) {
         setError("Failed to fetch products");
+        console.log(error)
       } finally {
         setIsLoading(false);
       }
@@ -42,7 +41,6 @@ const SearchPage = () => {
       <Typography variant="h4" gutterBottom>
         Search Results
       </Typography>
-      {error && <Typography color="error">{error}</Typography>}
       <Box
         width="90%"
         mx="auto"
