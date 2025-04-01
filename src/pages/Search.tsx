@@ -33,8 +33,7 @@ const SearchPage = () => {
   }, []);
 
   const filteredProducts = products.filter(
-    (product) => product?.category?.includes(searchCategory) && 
-                 (product.name.toLowerCase().includes(searchInputValue.toLowerCase().trim()) ||
+    (product) => (product.name.toLowerCase().includes(searchInputValue.toLowerCase().trim()) ||
                   product?.category.toLocaleLowerCase().includes(searchInputValue.toLocaleLowerCase().trim()))
   );
 
