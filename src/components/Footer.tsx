@@ -9,8 +9,6 @@ const Footer = () => {
       items: [
         { name: "About", path: "/about" },
         { name: "Contact", path: "/contact" },
-        { name: "Collection", path: "/collection" },
-        { name: "Customer Services", path: "/customer-services" },
         { name: "Store Locator", path: "/store-locator" },
       ],
     },
@@ -35,9 +33,6 @@ const Footer = () => {
     {
       title: "Customer Service",
       items: [
-        { name: "Delivery Info", path: "/customer-service/delivery-info" },
-        { name: "My Account", path: "/account" },
-        { name: "Size Guides", path: "/customer-service/size-guides" },
         { name: "FAQ's", path: "/faq" },
       ],
     },

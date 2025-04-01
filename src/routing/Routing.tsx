@@ -1,5 +1,4 @@
-import { About, Favourites, Home, Search, Shop, FAQ, StoreLocator} from "@/pages";
-import NotFound from "@/pages/NotFound";
+import { About, Favourites, Home, Search, Shop, FAQ, StoreLocator, ContactPage, NotFound } from "@/pages";
 import { Route, Routes } from "react-router-dom";
 
 const Routing = () => {
@@ -12,6 +11,7 @@ const Routing = () => {
       <Route path="/about" element={<About />} />
       <Route path = "/faq" element = {<FAQ/>}/>
       <Route path="/store-locator" element = {<StoreLocator/>}/>
+      <Route path="/contact" element = {<ContactPage/>}/>
       <Route path="*" element = {<NotFound/>}/>
     </Routes>
   );
