@@ -15,19 +15,19 @@ const Footer = () => {
     {
       title: "Product",
       items: [
-        { name: "Computer & Gaming", path: "/products/computer-gaming" },
-        { name: "Electronic", path: "/products/electronic" },
-        { name: "Mobile Accessories", path: "/products/mobile-accessories" },
-        { name: "Smart Devices", path: "/products/smart-devices" },
-        { name: "Photography & Video", path: "/products/photography-video" },
+        { name: "Computer & Gaming", path: "/" },
+        { name: "Electronic", path: "/" },
+        { name: "Mobile Accessories", path: "/" },
+        { name: "Smart Devices", path: "/" },
+        { name: "Photography & Video", path: "/" },
       ],
     },
     {
       title: "Super Deals",
       items: [
-        { name: "Mid-Season Sale", path: "/deals/mid-season" },
-        { name: "50% off (up to $99)", path: "/deals/50-off" },
-        { name: "30% off on all audio items", path: "/deals/audio" },
+        { name: "Mid-Season Sale", path: "/" },
+        { name: "50% off (up to $99)", path: "/" },
+        { name: "30% off on all audio items", path: "/" },
       ],
     },
     {
@@ -60,7 +60,7 @@ const Footer = () => {
             {section.items.map((item, i) => (
               <Link
                 component={NavLink}
-                to={section?.title === 'Company' || 'Customer Service'  ? item.path : '/'}
+                to={item.path}
                 key={i}
                 fontSize={14}
                 color="gray"
