@@ -57,13 +57,14 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
 
-          <Button onClick={(e) => setAnchorEl(e.currentTarget)} sx={{ color: "#fff", border: "1px solid white", width: "220px", height: "45px", px: 2 }}>
+          <Button onClick={(e) => setAnchorEl(e.currentTarget)} 
+                  sx={{ color: "#fff", border: "1px solid white", width: "220px", height: "45px", px: 2 }}>
             {searchCategory || "All Categories"}
           </Button>
 
           <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>
             <MenuItem onClick={() => setSearchCategory("all")}>All Categories</MenuItem>
-            {isLoading ? <MenuItem disabled>Loading...</MenuItem> : categories.map((category, idx) => (
+            {isLoading ? <MenuItem disabled>Loading...</MenuItem> : categories?.map((category, idx) => (
               <MenuItem key={idx} onClick={() => setSearchCategory(category)}>{category}</MenuItem>
             ))}
           </Menu>
