@@ -1,4 +1,4 @@
-import { Footer, Searchbar } from "@/components";
+import { Footer, Navbar, Searchbar } from "@/components";
 import { Alert } from "@/modals";
 import { ReactNode } from "react";
 
@@ -10,6 +10,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Searchbar />
+      <Navbar/>
       {children}
       <Footer />
       <Alert />

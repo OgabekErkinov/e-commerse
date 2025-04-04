@@ -1,4 +1,4 @@
-import { About, Favourites, Home, Search, Shop, FAQ, StoreLocator, ContactPage, NotFound } from "@/pages";
+import { About, ContactPage, FAQ, Favourites, Home, NotFound, Search, Shopping, StoreLocator } from "@/pages";
 import { Route, Routes } from "react-router-dom";
 
 const Routing = () => {
@@ -6,7 +6,7 @@ const Routing = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/favourites" element={<Favourites />} />
-      <Route path="/shop" element={<Shop />} />
+      <Route path="/shop" element={<Shopping />} />
       <Route path="/search" element={<Search />} />
       <Route path="/about" element={<About />} />
       <Route path = "/faq" element = {<FAQ/>}/>

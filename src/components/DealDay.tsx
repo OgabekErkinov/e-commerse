@@ -45,7 +45,7 @@ const DealDay = () => {
   };
 
   return (
-    <Box id="deals" height="620px" width="95%" mx="auto" p={2}>
+    <Box id="deals" height="620px" width="100%" mx="auto" p={2}>
       <Stack height="100%" maxWidth="1200px" mx="auto" justifyContent="space-around" alignItems="center">
         <Typography fontSize={{ xs: "22px", md: "36px" }} fontWeight="600">
           Deal of the Day

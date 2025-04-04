@@ -83,12 +83,12 @@ const BestSelling = () => {
 
       {/* Product Grid */}
       <Box
+        width='100%'
         display="grid"
         justifyContent="center"
         gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)" }}
-        gap={4}
-        p={4}
-        mx="auto"
+        gap={2}
+        p={2}
         bgcolor="#002E58"
       >
         {isLoading ? (

@@ -61,9 +61,7 @@ const TrendCategory = () => {
 
   return (
     <Box height="320px" width="95%" mx="auto" px={4} py={2} bgcolor="#E7E7E7">
-      <Stack
-        height="100%"
-        maxWidth="1200px"
+      <Stack height="100%" maxWidth="1200px"
         mx="auto"
         justifyContent="space-around"
         alignItems="center"
@@ -90,7 +88,7 @@ const TrendCategory = () => {
             bgcolor={forward ? "#fff" : "gray"}
             border="1px solid gray"
             borderRadius="50%"
-            left="-20px"
+            left="-10px"
             top="50%"
             sx={{
               transform: "translateY(-50%)",
@@ -118,7 +116,7 @@ const TrendCategory = () => {
             bgcolor={!forward ? "#fff" : "gray"}
             border="1px solid gray"
             borderRadius="50%"
-            right="-20px"
+            right="-10px"
             top="50%"
             sx={{
               transform: "translateY(-50%)",
@@ -140,6 +138,7 @@ const TrendCategory = () => {
           <Box
             display="flex"
             height="100%"
+            width='100%'
             overflow="hidden"
             justifyContent="center"
             gap={2}

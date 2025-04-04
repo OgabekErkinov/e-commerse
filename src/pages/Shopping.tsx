@@ -6,7 +6,7 @@ import axios from "axios";
 import { Product } from "@/interface/interfaces";
 import MultipleLoading from "@/loadings/MultipleLoading";
 
-const ShoppingPage: React.FC = () => {
+const Shopping: React.FC = () => {
   const { carts, setCarts } = useStore();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -119,4 +119,4 @@ const ShoppingPage: React.FC = () => {
   );
 };
 
-export default ShoppingPage;
+export default Shopping;
