@@ -21,7 +21,7 @@ const Alert = () => {
         borderRadius='12px'
         bgcolor='#fff'
       >
-        <Typography color={color} fontSize="14px" fontWeight={600}>
+        <Typography color={color} fontSize="14px" fontWeight={600} textAlign='center'>
           {message}
         </Typography>
       </Stack>
