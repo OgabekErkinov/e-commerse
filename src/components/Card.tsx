@@ -7,11 +7,7 @@ import "aos/dist/aos.css";
 import { Product } from "@/interface/interfaces";
 import useStore from "@/store/store";
 import useAlert from "@/store/alertStore";
-
-type CardProps = {
-  product: Product;
-  idx: number;
-};
+import { CardProps } from "@/interface/props";
 
 const BASE_URL = "https://json-server-oa7o.onrender.com";
 
