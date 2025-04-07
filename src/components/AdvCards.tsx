@@ -10,11 +10,11 @@ const AdvCards = () => {
       my={2}
       p={2}
       display="grid"
-      gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr" }}
+      gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr" }}
       gap={{ xs: "20px", md: "40px" }}
     >
       {/* First Card */}
-      <Box height={{ xs: "350px", md: "260px" }} width="100%" display="flex"
+      <Box height={{ xs: "400px", md: "260px" }} width="100%" display="flex"
            flexDirection={{ xs: "column", md: "row" }} p={2} borderRadius={2}
         sx={{
           backgroundImage: "url(/redBg.svg)",
@@ -26,14 +26,15 @@ const AdvCards = () => {
           width={{ xs: "100%", md: "50%" }}
           display="flex"
           flexDirection="column"
+          rowGap={1}
           alignItems="flex-start"
           justifyContent="center"
-          p={{ xs: "14px", md: "16px" }}
+          p={1}
         >
           <Typography variant="h5" color="#fff" fontWeight="600">
             Handheld Smartphone Gimbal
           </Typography>
-          <Typography color="#eee" fontSize="14px" mt={1} mb={2}>
+          <Typography color="#eee" fontSize="14px">
             Professional stabilization for smooth and cinematic shots on your phone.
           </Typography>
           <Button
@@ -43,8 +44,7 @@ const AdvCards = () => {
               bgcolor: "#000",
               color: "#fff",
               borderRadius: "8px",
-              px: 2,
-              py: 1,
+              p : 1,
               "&:hover": { bgcolor: "#222" },
             }}
           >
@@ -56,15 +56,15 @@ const AdvCards = () => {
         <Box
           component="img"
           src="/handheld.svg"
-          height={{ xs: "50%", md: "100%" }}
+          height={{ xs: "40%", sm : '50%', md: "100%" }}
           width="100%"
           sx={{ objectFit: "contain" }}
         />
       </Box>
 
       {/* Second Card */}
-      <Box height={{ xs: "350px", md: "260px" }} width="100%" display="flex"
-           flexDirection={{ xs: "column-reverse", md: "row" }} p={2}  borderRadius={2}
+      <Box height={{ xs: "400px", md: "260px" }} width="100%" display="flex"
+           flexDirection={{ xs: "column-reverse", md: "row" }} p={1}  borderRadius={2}
         sx={{
           backgroundImage: "url(/blueBg.svg)",
           backgroundSize: "cover",
@@ -100,8 +100,7 @@ const AdvCards = () => {
               bgcolor: "#000",
               color: "#fff",
               borderRadius: "8px",
-              px: 2,
-              py: 1,
+              p : 1,
               "&:hover": { bgcolor: "#222" },
             }}
           >
