@@ -14,6 +14,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isLargeScreen = useMediaQuery("(min-width: 900px)");
+  const isMiddleScreen = useMediaQuery("(min-width : 540px)");
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
@@ -58,7 +59,7 @@ const Navbar = () => {
           </IconButton>
 
           <Button onClick={(e) => setAnchorEl(e.currentTarget)} 
-                  sx={{ color: "#fff", border: "1px solid white", width: "220px", height: "45px", px: 2 }}>
+                  sx={{ color: "#fff", border: "1px solid white", width: "220px", height: "45px", px: 2, display : isMiddleScreen ? 'block' : 'none'}}>
             {searchCategory || "All Categories"}
           </Button>
 
