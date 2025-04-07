@@ -7,9 +7,10 @@ const Alert = () => {
     <Box
       position="absolute"
       top="10px"
-      left="25%"
+      width='100%'
       zIndex={10}
-      display={isAlert ? "block" : "none"}
+      display={isAlert ? "flex" : "none"}
+      justifyContent='center'
     >
       <Stack
         height="250px"
