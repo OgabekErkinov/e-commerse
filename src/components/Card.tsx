@@ -44,11 +44,9 @@ const Card: React.FC<CardProps> = ({ product, idx }) => {
     try {
       if (isFavorite) {
         await axios.delete(`${BASE_URL}/favourites/${product.id}`);
-        alert('delete favourite')
         showAlert("Product removed from favorites successfully!", "green");
       } else {
         await axios.post(`${BASE_URL}/favourites`, product);
-        alert('add favourite')
         showAlert("Product added to favorites successfully!", "green");
       }
       const updatedFavourites = await axios.get<Product[]>(`${BASE_URL}/favourites`).then(res => res.data);

@@ -5,21 +5,23 @@ const Alert = () => {
   const { message, color, isAlert } = useAlert();
   return (
     <Box
-      position="absolute"
-      top="10px"
+      position="fixed"
+      top="20px"
       width='100%'
       zIndex={10}
       display={isAlert ? "flex" : "none"}
       justifyContent='center'
     >
       <Stack
-        height="250px"
-        width="60%"
+        height="50px"
+        width="300px"
         justifyContent="center"
         alignItems="center"
         border={`1px solid ${color}`}
+        borderRadius='12px'
+        bgcolor='#fff'
       >
-        <Typography color={color} fontSize="18px">
+        <Typography color={color} fontSize="14px" fontWeight={600}>
           {message}
         </Typography>
       </Stack>
