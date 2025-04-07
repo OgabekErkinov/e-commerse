@@ -13,30 +13,20 @@ const Searchbar = () => {
 
   return (
     <>
-      <Box
-        height="100px"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
+      <Box height="100px"  display="flex" justifyContent="center" alignItems="center" >
         <Box
           width="90%"
           display="flex"
           justifyContent="space-between"
           alignItems="center"
+          columnGap={1}
         >
           {/* Logo */}
-          <Box
-            display="flex"
-            alignItems="center"
-            gap={1}
-            sx={{ cursor: "pointer" }}
-            onClick={() => navigate("/")}
+          <Box display="flex" alignItems="center" gap={1} sx={{ cursor: "pointer" }}
+               onClick={() => navigate("/")}
           >
-            <Box
-              component="img"
-              src="/Vector.svg"
-              sx={{ height: { xs: "36px", md: "42px" } }}
+            <Box component="img" src="/Vector.svg"
+                 sx={{ height: { xs: "36px", md: "42px" } }}
             />
             <Typography
               fontSize={{ xs: "18px", md: "24px" }}
@@ -75,11 +65,8 @@ const Searchbar = () => {
           </Box>
 
           {/* Right Section */}
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="flex-end"
-            sx={{ gap: 2 }}
+          <Box display="flex" alignItems="center" justifyContent="flex-end"
+               sx={{ gap: 2 }}
           >
             <Box
               display={{ xs: "none", md: "flex" }}
