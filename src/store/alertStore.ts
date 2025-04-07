@@ -15,7 +15,7 @@ const useAlert = create<AlertState>((set) => ({
   showAlert: (message, color) => {
     set({ message, color, isAlert: true });
     setTimeout(() => {
-      set({ isAlert: true });
+      set({ isAlert: false });
     }, 2500);
   },
 }));
