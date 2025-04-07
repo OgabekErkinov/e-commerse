@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  TextField,
-  Button,
-  MenuItem,
-} from "@mui/material";
+import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, MenuItem } from "@mui/material";
 
 const categories = ["electronics", "jewelery", "men's clothing", "women's clothing"];
 
@@ -47,7 +39,7 @@ const AddProductModal = ({ open, onClose, onAdd, editProduct }) => {
       <DialogContent>
         <TextField
           name="title"
-          label="Nomi"
+          label="Title"
           fullWidth
           margin="dense"
           value={product.title}
@@ -55,7 +47,7 @@ const AddProductModal = ({ open, onClose, onAdd, editProduct }) => {
         />
         <TextField
           name="price"
-          label="Narxi ($)"
+          label="Price ($)"
           type="number"
           fullWidth
           margin="dense"
@@ -65,7 +57,7 @@ const AddProductModal = ({ open, onClose, onAdd, editProduct }) => {
         <TextField
           select
           name="category"
-          label="Kategoriya"
+          label="Category"
           fullWidth
           margin="dense"
           value={product.category}
@@ -79,7 +71,7 @@ const AddProductModal = ({ open, onClose, onAdd, editProduct }) => {
         </TextField>
         <TextField
           name="description"
-          label="Tavsif"
+          label="Description"
           multiline
           rows={3}
           fullWidth
@@ -89,7 +81,7 @@ const AddProductModal = ({ open, onClose, onAdd, editProduct }) => {
         />
         <TextField
           name="image"
-          label="Rasm URL"
+          label="Image URL"
           fullWidth
           margin="dense"
           value={product.image}
