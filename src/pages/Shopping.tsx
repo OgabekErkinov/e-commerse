@@ -54,7 +54,7 @@ const Shopping: React.FC = () => {
   return (
     <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={2} p={4}>
       
-      <Box width='70%' display="grid"
+      <Box width='100%' display="grid"
         gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr", md: "repeat(3,1fr)" }}
         gap={4}
         alignItems="center"
@@ -69,7 +69,7 @@ const Shopping: React.FC = () => {
         )}
       </Box>
 
-      <Box p={4} bgcolor="white" borderRadius={2} boxShadow={3} minWidth="250px" maxWidth='300px'
+      <Box p={4} bgcolor="white" borderRadius={2} boxShadow={3} minWidth="250px" maxWidth={{xs : '100%' , md : '300px'}} 
            sx={{ height: "fit-content" }}>
         <Typography variant="h5" fontWeight={600} mb={2}>
           Shopping Summary
